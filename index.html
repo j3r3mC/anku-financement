@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anku | Financement</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="video-bg" aria-hidden="true" id="videoBg">
+    <video id="bgVideo" autoplay muted loop playsinline preload="metadata">
+      <source src="assets/videos/bg-landing-page.webm" type="video/webm">
+    </video>
+  </div>
+
+  <div class="container">
+    <section class="banner">
+<img src="./assets/images/logo.png" alt="Logo Anku">
+      <div class="banner-text">
+        <h1>Notre ambition</h1>
+        <p>Devenir la plateforme de référence des circuits courts en Europe...</p>
+        <button id="contactBtn" class="cta">Contactez-nous</button>
+      </div>
+    </section>
+
+    <section class="investissement">
+      <div class="title-section"><h2>Pourquoi investir ?</h2></div>
+      <div class="card-container">
+        <div class="card"><img src="assets/images/copilot.png" alt="Icône marché local"><p>Investir dans Anku...</p></div>
+        <div class="card"><img src="assets/images/reseaux-anku.png" alt="Icône circuit court"><p>Investir dans Anku...</p></div>
+        <div class="card"><img src="assets/images/coop.png" alt="Icône coopérative"><p>Un modèle évolutif...</p></div>
+      </div>
+      <button id="downloadDocs" class="cta">Télécharger les documents</button>
+
+      <div id="downloadModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="downloadTitle" aria-hidden="true">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-panel" role="document">
+          <button class="modal-close" aria-label="Fermer la fenêtre">×</button>
+          <div class="modal-header">
+            <img src="assets/images/logo.png" alt="Logo Anku" class="modal-logo">
+            <div>
+              <h3 id="downloadTitle">Accord de confidentialité</h3>
+              <p class="modal-sub">Laissez vos coordonnées pour recevoir la documentation.</p>
+            </div>
+          </div>
+
+          <form id="downloadForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST">
+            <input type="hidden" name="_subject" value="Nouvelle demande docs — Anku">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="">
+            <input type="text" name="_honey" style="display:none" autocomplete="off">
+
+            <label for="download_name">Nom</label>
+            <input id="download_name" name="name" type="text" required>
+
+            <label for="download_firstname">Prénom</label>
+            <input id="download_firstname" name="firstname" type="text" required>
+
+            <label for="download_email">Email</label>
+            <input id="download_email" name="email" type="email" required>
+
+            <label for="download_company">Société (optionnel)</label>
+            <input id="download_company" name="company" type="text">
+
+            <label class="consent">
+              <input id="consent" name="consent" type="checkbox" required>
+              En cochant la case « J’ai lu et j’accepte »...
+              <ul>
+                <li><a href="assets/documents/charte-anku.pdf" download="charte-anku.pdf" class="doc-link">La charte de confidentialité</a></li>
+                <li><a href="">Les conditions générales d'utilisations</a></li>
+              </ul>
+            </label>
+
+            <div class="modal-actions">
+              <button type="submit" class="btn primary">Recevoir les documents</button>
+              <button type="button" class="btn secondary" data-close>Annuler</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-video-inline">
+      <div class="video-wrapper">
+        <video id="bgVideo" autoplay muted loop playsinline preload="metadata">
+          <source src="assets/videos/presentation.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <section class="reseau">
+      <h2>Connecter producteurs locaux, artisans et particuliers.</h2>
+      <p>Redonner du sens avec le premier réseau social dédié aux circuits courts...</p>
+      <div class="card-container">
+        <div class="card"><img src="assets/images/coop.png" alt="Icône profil"><p>D’un profil et d’une boutique en ligne...</p></div>
+        <div class="card"><img src="assets/images/social.png" alt="Icône social"><p>D’un système de notation...</p></div>
+        <div class="card"><img src="assets/images/abonnements.png" alt="Icône abonnements"><p>Des abonnements récurrents...</p></div>
+      </div>
+      <p>Les particuliers peuvent découvrir, suivre, commander...</p>
+    </section>
+  </div>
+
+  <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Fermer la fenêtre">×</button>
+      <div class="modal-header">
+        <img src="/assets/images/logo.png" alt="Logo Anku" class="modal-logo">
+        <div>
+          <h3 id="contactTitle">Contact</h3>
+          <p class="modal-sub">Laissez vos coordonnées et votre message...</p>
+        </div>
+      </div>
+
+      <form id="contactForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST">
+        <input type="text" name="_honey" style="display:none" autocomplete="off">
+        <input type="hidden" name="_subject" value="Contact landing page — Anku">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://ton-site.netlify.app/merci.html">
+
+        <label for="contact_lastname">Nom</label>
+        <input id="contact_lastname" name="name" type="text" required>
+
+        <label for="contact_firstname">Prénom</label>
+        <input id="contact_firstname" name="firstname" type="text" required>
+
+        <label for="contact_email">Email</label>
+        <input id="contact_email" name="email" type="email" required>
+
+        <label for="contact_company">Société (optionnel)</label>
+        <input id="contact_company" name="company" type="text">
+
+        <label for="contact_message">Message</label>
+        <textarea id="contact_message" name="message" rows="6" required></textarea>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn primary">Envoyer</button>
+          <button type="button" class="btn secondary" data-close>Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>
