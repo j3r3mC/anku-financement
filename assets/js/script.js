@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
   let lastFocused = null;
 
-  function openModal(modal) {a
+  function openModal(modal) {
     lastFocused = document.activeElement;
     modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     const first = modal.querySelector(focusableSelector);
     if (first) first.focus();
@@ -20,28 +21,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeModal(modal) {
     modal.setAttribute('aria-hidden', 'true');
+    modal.classList.remove('is-open');
     document.body.style.overflow = '';
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
   }
 
-  if (contactBtn && contactModal) contactBtn.addEventListener('click', () => openModal(contactModal));
-  if (downloadBtn && downloadModal) downloadBtn.addEventListener('click', () => openModal(downloadModal));
+  if (contactBtn && contactModal) {
+    contactBtn.addEventListener('click', () => openModal(contactModal));
+  }
+
+  if (downloadBtn && downloadModal) {
+    downloadBtn.addEventListener('click', () => openModal(downloadModal));
+  }
 
   modals.forEach(modal => {
     const closeEls = Array.from(modal.querySelectorAll('[data-close], .modal-close, .btn.secondary'));
     closeEls.forEach(el => el.addEventListener('click', () => closeModal(modal)));
 
     const backdrop = modal.querySelector('.modal-backdrop');
-    if (backdrop) backdrop.addEventListener('click', () => closeModal(modal));
+    if (backdrop) {
+      backdrop.addEventListener('click', () => closeModal(modal));
+    }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal(modal);
+      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+        closeModal(modal);
+      }
+
       if (e.key === 'Tab' && modal.getAttribute('aria-hidden') === 'false') {
         const focusables = Array.from(modal.querySelectorAll(focusableSelector));
-        if (focusables.length === 0) { e.preventDefault(); return; }
-        const first = focusables[0], last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        if (focusables.length === 0) {
+          e.preventDefault();
+          return;
+        }
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     });
   });
@@ -51,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function bindForm(form, modal) {
     if (!form) return;
+
     form.addEventListener('submit', (ev) => {
       ev.preventDefault();
 
@@ -62,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
       form.setAttribute('method', 'POST');
       form.submit();
 
-      // Téléchargement conditionnel pour le formulaire de téléchargement
       if (form.id === 'downloadForm') {
         const consent = form.querySelector('#consent');
         if (consent && consent.checked) {

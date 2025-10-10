@@ -8,14 +8,14 @@
 </head>
 <body>
   <div class="video-bg" aria-hidden="true" id="videoBg">
-    <video id="bgVideo" autoplay muted loop playsinline preload="metadata">
+    <video autoplay muted loop playsinline preload="metadata">
       <source src="assets/videos/bg-landing-page.webm" type="video/webm">
     </video>
   </div>
 
   <div class="container">
     <section class="banner">
-<img src="./assets/images/logo.png" alt="Logo Anku">
+      <img src="./assets/images/logo.png" alt="Logo Anku">
       <div class="banner-text">
         <h1>Notre ambition</h1>
         <p>Devenir la plateforme de référence des circuits courts en Europe...</p>
@@ -32,7 +32,7 @@
       </div>
       <button id="downloadDocs" class="cta">Télécharger les documents</button>
 
-      <div id="downloadModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="downloadTitle" aria-hidden="true">
+      <div id="downloadModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="downloadTitle" aria-describedby="downloadDesc" aria-hidden="true">
         <div class="modal-backdrop" data-close></div>
         <div class="modal-panel" role="document">
           <button class="modal-close" aria-label="Fermer la fenêtre">×</button>
@@ -40,14 +40,14 @@
             <img src="assets/images/logo.png" alt="Logo Anku" class="modal-logo">
             <div>
               <h3 id="downloadTitle">Accord de confidentialité</h3>
-              <p class="modal-sub">Laissez vos coordonnées pour recevoir la documentation.</p>
+              <p id="downloadDesc" class="modal-sub">Laissez vos coordonnées pour recevoir la documentation.</p>
             </div>
           </div>
 
           <form id="downloadForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST">
             <input type="hidden" name="_subject" value="Nouvelle demande docs — Anku">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="">
+            <input type="hidden" name="_next" value="https://ton-site.netlify.app/merci.html">
             <input type="text" name="_honey" style="display:none" autocomplete="off">
 
             <label for="download_name">Nom</label>
@@ -67,7 +67,7 @@
               En cochant la case « J’ai lu et j’accepte »...
               <ul>
                 <li><a href="assets/documents/charte-anku.pdf" download="charte-anku.pdf" class="doc-link">La charte de confidentialité</a></li>
-                <li><a href="">Les conditions générales d'utilisations</a></li>
+                <li><a href="assets/documents/cgu-anku.pdf" download="cgu-anku.pdf">Les conditions générales d'utilisation</a></li>
               </ul>
             </label>
 
@@ -82,7 +82,7 @@
 
     <section class="section-video-inline">
       <div class="video-wrapper">
-        <video id="bgVideo" autoplay muted loop playsinline preload="metadata">
+        <video id="inlineVideo" autoplay muted loop playsinline preload="metadata">
           <source src="assets/videos/presentation.mp4" type="video/mp4">
         </video>
       </div>
@@ -100,7 +100,7 @@
     </section>
   </div>
 
-  <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
+  <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-describedby="contactDesc" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
     <div class="modal-panel" role="document">
       <button class="modal-close" aria-label="Fermer la fenêtre">×</button>
@@ -108,7 +108,7 @@
         <img src="./assets/images/logo.png" alt="Logo Anku">
         <div>
           <h3 id="contactTitle">Contact</h3>
-          <p class="modal-sub">Laissez vos coordonnées et votre message...</p>
+          <p id="contactDesc" class="modal-sub">Laissez vos coordonnées et votre message...</p>
         </div>
       </div>
 
