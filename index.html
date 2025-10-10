@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <div class="video-bg" aria-hidden="true" id="videoBg">
+  <div class="video-bg" aria-hidden="true">
     <video autoplay muted loop playsinline preload="metadata">
       <source src="assets/videos/bg-landing-page.webm" type="video/webm">
     </video>
@@ -31,53 +31,6 @@
         <div class="card"><img src="assets/images/coop.png" alt="Icône coopérative"><p>Un modèle évolutif...</p></div>
       </div>
       <button id="downloadDocs" class="cta">Télécharger les documents</button>
-
-      <div id="downloadModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="downloadTitle" aria-describedby="downloadDesc" aria-hidden="true">
-        <div class="modal-backdrop" data-close></div>
-        <div class="modal-panel" role="document">
-          <button class="modal-close" aria-label="Fermer la fenêtre">×</button>
-          <div class="modal-header">
-            <img src="assets/images/logo.png" alt="Logo Anku" class="modal-logo">
-            <div>
-              <h3 id="downloadTitle">Accord de confidentialité</h3>
-              <p id="downloadDesc" class="modal-sub">Laissez vos coordonnées pour recevoir la documentation.</p>
-            </div>
-          </div>
-
-          <form id="downloadForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST">
-            <input type="hidden" name="_subject" value="Nouvelle demande docs — Anku">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://ton-site.netlify.app/merci.html">
-            <input type="text" name="_honey" style="display:none" autocomplete="off">
-
-            <label for="download_name">Nom</label>
-            <input id="download_name" name="name" type="text" required>
-
-            <label for="download_firstname">Prénom</label>
-            <input id="download_firstname" name="firstname" type="text" required>
-
-            <label for="download_email">Email</label>
-            <input id="download_email" name="email" type="email" required>
-
-            <label for="download_company">Société (optionnel)</label>
-            <input id="download_company" name="company" type="text">
-
-            <label class="consent">
-              <input id="consent" name="consent" type="checkbox" required>
-              En cochant la case « J’ai lu et j’accepte »...
-              <ul>
-                <li><a href="assets/documents/charte-anku.pdf" download="charte-anku.pdf" class="doc-link">La charte de confidentialité</a></li>
-                <li><a href="assets/documents/cgu-anku.pdf" download="cgu-anku.pdf">Les conditions générales d'utilisation</a></li>
-              </ul>
-            </label>
-
-            <div class="modal-actions">
-              <button type="submit" class="btn primary">Recevoir les documents</button>
-              <button type="button" class="btn secondary" data-close>Annuler</button>
-            </div>
-          </form>
-        </div>
-      </div>
     </section>
 
     <section class="section-video-inline">
@@ -100,7 +53,8 @@
     </section>
   </div>
 
-  <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-describedby="contactDesc" aria-hidden="true">
+  <!-- Modale Contact -->
+  <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
     <div class="modal-panel" role="document">
       <button class="modal-close" aria-label="Fermer la fenêtre">×</button>
@@ -108,10 +62,9 @@
         <img src="./assets/images/logo.png" alt="Logo Anku">
         <div>
           <h3 id="contactTitle">Contact</h3>
-          <p id="contactDesc" class="modal-sub">Laissez vos coordonnées et votre message...</p>
+          <p class="modal-sub">Laissez vos coordonnées et votre message...</p>
         </div>
       </div>
-
       <form id="contactForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST">
         <input type="text" name="_honey" style="display:none" autocomplete="off">
         <input type="hidden" name="_subject" value="Contact landing page — Anku">
@@ -135,6 +88,53 @@
 
         <div class="modal-actions">
           <button type="submit" class="btn primary">Envoyer</button>
+          <button type="button" class="btn secondary" data-close>Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modale Téléchargement -->
+  <div id="downloadModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="downloadTitle" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Fermer la fenêtre">×</button>
+      <div class="modal-header">
+        <img src="assets/images/logo.png" alt="Logo Anku" class="modal-logo">
+        <div>
+          <h3 id="downloadTitle">Accord de confidentialité</h3>
+          <p class="modal-sub">Laissez vos coordonnées pour recevoir la documentation.</p>
+        </div>
+      </div>
+      <form id="downloadForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle demande docs — Anku">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://ton-site.netlify.app/merci.html">
+        <input type="text" name="_honey" style="display:none" autocomplete="off">
+
+        <label for="download_name">Nom</label>
+        <input id="download_name" name="name" type="text" required>
+
+        <label for="download_firstname">Prénom</label>
+        <input id="download_firstname" name="firstname" type="text" required>
+
+        <label for="download_email">Email</label>
+        <input id="download_email" name="email" type="email" required>
+
+        <label for="download_company">Société (optionnel)</label>
+        <input id="download_company" name="company" type="text">
+
+        <label class="consent">
+          <input id="consent" name="consent" type="checkbox" required>
+          En cochant la case « J’ai lu et j’accepte »...
+          <ul>
+            <li><a href="assets/documents/charte-anku.pdf" download="charte-anku.pdf">La charte de confidentialité</a></li>
+            <li><a href="assets/documents/cgu-anku.pdf" download="cgu-anku.pdf">Les conditions générales d'utilisation</a></li>
+          </ul>
+        </label>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn primary">Recevoir les documents</button>
           <button type="button" class="btn secondary" data-close>Annuler</button>
         </div>
       </form>
