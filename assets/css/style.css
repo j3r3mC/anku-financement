@@ -238,8 +238,8 @@ justify-self: center;
 }
 
 .modal-logo{
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
 }
 
 /* visible when aria-hidden is false */
