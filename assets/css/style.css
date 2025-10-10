@@ -238,8 +238,8 @@ justify-self: center;
 }
 
 .modal-logo{
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
 }
 
 /* visible when aria-hidden is false */
@@ -349,7 +349,6 @@ input:focus, textarea:focus {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  height: 90vh;
 }
 
 .modal.is-open {
