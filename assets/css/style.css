@@ -394,6 +394,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
   opacity: 1;
 }
 
+
 /* Add a pseudo "floating shadow" under lifted elements for realism */
 .card__front img.card__desc::after,
 .card__front h3::after {
@@ -451,6 +452,23 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
   background: transparent;
 }
 .card.small img { width: 64px; height: 64px; }
+/* enlever voile sur la face sans toucher à la transparence globale */
+.card__front,
+.card__back {
+  background: transparent; /* ou remplacer rgba par une couleur opaque si besoin */
+  backdrop-filter: none;
+  border: none; /* supprime la bordure semi-opaque */
+}
+/* supprimer les box-shadows indésirables */
+.card,
+.card__front,
+.card__back,
+.card__front img.card__desc,
+.card__front img.card__desc::after {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
 
 /* Responsive */
 @media (max-width: 1200px) {
