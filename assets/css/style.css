@@ -434,7 +434,6 @@ input:focus, textarea:focus {
   align-items: center;
   justify-content: center;
   text-align: left;
-  padding: 0;
   backdrop-filter: blur(12px);
 }
 
