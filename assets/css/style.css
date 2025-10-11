@@ -615,6 +615,9 @@ img.card__desc {
 /* Small card modifier for network section to avoid flip behavior */
 .card.small { overflow: visible; }
 
+#video-title{
+  display: none;
+}
 /* Responsive */
 @media (max-width: 1200px) {
   .card { width: 420px; height: calc(420px * (var(--card-height-desktop) / var(--card-width-desktop))); }
