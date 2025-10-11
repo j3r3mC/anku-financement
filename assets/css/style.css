@@ -294,7 +294,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
   display: flex;
   flex-direction: row;
   padding: 2rem 0;
-  perspective: 2000px;
+  perspective: 2001px;
 }
 
 /* Card */
