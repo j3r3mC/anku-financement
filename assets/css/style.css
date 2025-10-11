@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #8D996D;
-  --secondary-color: #4F621E;
+  --primary-color: #8d996dcb;
+  --secondary-color: #4f621ec9;
   --card-light: #F9EAEE;
   --card-medium: #B6E8DA;
   --card-alt: #FFD3D3;
@@ -424,17 +424,13 @@ input:focus, textarea:focus {
 
 /* Color variants */
 .card-one .card__front { background: var(--primary-color); color: var(--text-light); }
-.card-one .card__back  { background: var(--card-light); color: var(--primary-color); }
+.card-one .card__back  { background: var(--secondary-color); color: var(--primary-color); }
 
 .card-two .card__front { background: var(--secondary-color); color: var(--text-light); }
-.card-two .card__back  { background: var(--card-medium); color: var(--secondary-color); }
+.card-two .card__back  { background: var(--primary-color); color: var(--secondary-color); }
 
-.card-three .card__front { background: var(--card-alt); color: var(--primary-color); }
-.card-three .card__back  { background: var(--primary-color); color: var(--card-light); }
-
-.card-four .card__front { background: var(--card-soft); color: var(--secondary-color); }
-.card-four .card__back  { background: var(--secondary-color); color: var(--text-light); }
-
+.card-three .card__front { background: var(--primary-color); color: var(--primary-color); }
+.card-three .card__back  { background: var(--secondary-color); color: var(--card-light); }
 /* Responsive rules — keep aspect but scale down gracefully */
 @media (max-width: 1200px) {
   
