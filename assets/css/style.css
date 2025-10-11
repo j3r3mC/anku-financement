@@ -361,7 +361,6 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 }
 
 /* Layered elements that will "lift" */
-.card__front img.card__desc,
 .card__front h3,
 .card__front p,
 .card__front .card-cta {
@@ -430,13 +429,13 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 }
 
 /* Color variants */
-.card-one .card__front { background: rgba(141,153,109,0.72); color: black; }
+.card-one .card__front { background: rgba(141,153,109,0.72); color: black; backdrop-filter: blur(6px); }
 .card-one .card__back  { background: rgba(79,98,30,0.6); color: black; }
 
-.card-two .card__front { background: rgba(79,98,30,0.72); color: black; }
+.card-two .card__front { background: rgba(79,98,30,0.72); color: black;backdrop-filter: blur(6px); }
 .card-two .card__back  { background: rgba(141,153,109,0.6); color: black; }
 
-.card-three .card__front { background: rgba(183,234,220,0.72); color: black; }
+.card-three .card__front { background: rgba(141,153,109,0.72); color: black;backdrop-filter: blur(6px); }
 .card-three .card__back  { background: rgba(79,98,30,0.6); color: black; }
 
 /* Small cards (network) */
