@@ -438,11 +438,8 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 .card-two .card__front { background: rgba(79,98,30,0.72); color: white; }
 .card-two .card__back  { background: rgba(141,153,109,0.6); color: white; }
 
-.card-three .card__front { background: rgba(255,211,211,0.7); color: var(--primary-color); }
+.card-three .card__front { background:  rgba(141,153,109,0.6); color: var(--primary-color); }
 .card-three .card__back  { background: rgba(141,153,109,0.6); color: #F9EAEE; }
-
-.card-four .card__front { background: rgba(183,234,220,0.72); color: var(--secondary-color); }
-.card-four .card__back  { background: rgba(79,98,30,0.6); color: white; }
 
 /* Small cards (network) */
 .card.small {
