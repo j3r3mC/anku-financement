@@ -615,7 +615,7 @@ img.card__desc {
 /* Small card modifier for network section to avoid flip behavior */
 .card.small { overflow: visible; }
 
-#video-title{
+#videoTitle{
   display: none;
 }
 /* Responsive */
