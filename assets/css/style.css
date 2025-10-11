@@ -23,7 +23,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
 }
 
 /* Video background container (parallax-friendly) */
@@ -341,6 +340,7 @@ input:focus, textarea:focus {
   display: flex;
   flex-direction: row;
   padding: 2rem 0;
+  perspective: 1600px;
 }
 
 /* Card default properties — requested fixed size on desktop */
@@ -351,6 +351,8 @@ input:focus, textarea:focus {
   cursor: pointer;
   transform-style: preserve-3d;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
+  will-change: transform;
 }
 
 .card__content {
@@ -361,83 +363,134 @@ input:focus, textarea:focus {
   transition: transform 1s cubic-bezier(.2,.9,.2,1);
 }
 
+/* flip trigger */
 .card:hover .card__content,
 .card.flipped .card__content {
   transform: rotateY(180deg);
 }
 
-/* Faces */
+/* Faces with transparency and 3D depth */
 .card__front, .card__back {
   position: absolute;
   inset: 0;
   border-radius: 20px;
-  padding: 1.25rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  background: #fff;
-  color: var(--text-dark);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  color: var(--text-light);
 }
 
-.card__front { gap: 1rem; }
-
-.card__back {
-  transform: rotateY(180deg);
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+/* make front content left-aligned on wide layouts while keeping 3D center effect */
+.card__front {
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
   padding: 2rem;
 }
 
-/* Content helpers */
+/* back face */
+.card__back {
+  transform: rotateY(180deg);
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+/* 3D content layers */
 .card__front img.card__desc {
-  width: 100%;
-  height: auto;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  transform: translateZ(80px) translateY(-10px);
+  transition: transform 0.6s cubic-bezier(.2,.9,.2,1), opacity 0.45s ease;
+  opacity: 0.98;
 }
 
 .card h3 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.75rem;
-  line-height: 1.1;
+  font-size: 2rem;
+  line-height: 1.05;
+  transform: translateZ(48px);
+  transition: transform 0.6s cubic-bezier(.2,.9,.2,1), opacity 0.45s ease;
 }
 
 .card p {
   margin: 0;
   line-height: 1.45;
   font-size: 1.05rem;
+  transform: translateZ(32px);
+  transition: transform 0.6s cubic-bezier(.2,.9,.2,1), opacity 0.45s ease;
+  opacity: 0.95;
 }
 
-/* If you want long paragraphs on the back, allow vertical scroll inside face */
+/* subtle parallax on hover/flip for inner layers */
+.card:hover img.card__desc,
+.card.flipped img.card__desc {
+  transform: translateZ(20px) translateY(-6px) scale(0.98);
+  opacity: 1;
+}
+.card:hover h3,
+.card.flipped h3 {
+  transform: translateZ(28px);
+  opacity: 1;
+}
+.card:hover p,
+.card.flipped p {
+  transform: translateZ(18px);
+  opacity: 1;
+}
+
+/* Back content scroll area */
 .card__back .card__body {
-  max-height: calc(var(--card-height-desktop) - 4rem);
+  max-height: calc(var(--card-height-desktop) - 5rem);
   overflow-y: auto;
   padding-right: 0.5rem;
+  transform: translateZ(32px);
 }
 
-/* Color variants */
-.card-one .card__front { background: var(--primary-color); color: white; }
-.card-one .card__back  { background: var(--secondary-color); color: var(--primary-color); }
+/* Color variants with transparency */
+.card-one .card__front { background: rgba(141,153,109,0.72); color: white; }
+.card-one .card__back  { background: rgba(79,98,30,0.6); color: white; }
 
-.card-two .card__front { background: var(--secondary-color); color: white; }
-.card-two .card__back  { background: var(--primary-color); color: white; }
+.card-two .card__front { background: rgba(79,98,30,0.72); color: white; }
+.card-two .card__back  { background: rgba(141,153,109,0.6); color: white; }
 
-.card-three .card__front { background: var(--primary-color); color: white; }
-.card-three .card__back  { background: var(--secondary-color); color: white; }
+.card-three .card__front { background: rgba(255,211,211,0.7); color: var(--primary-color); }
+.card-three .card__back  { background: rgba(141,153,109,0.6); color: #F9EAEE; }
+
+.card-four .card__front { background: rgba(183,234,220,0.72); color: var(--secondary-color); }
+.card-four .card__back  { background: rgba(79,98,30,0.6); color: white; }
+
+/* small card modifier for network section to avoid flip behavior */
+.card.small {
+  width: 220px;
+  height: auto;
+  perspective: none;
+  box-shadow: none;
+  background: transparent;
+}
+.card.small img { width: 64px; height: 64px; }
+
 /* Responsive rules — keep aspect but scale down gracefully */
 @media (max-width: 1200px) {
-  
   .card {
     width: 420px;
-    height: 420px * (var(--card-height-desktop) / var(--card-width-desktop));
+    height: calc(420px * (var(--card-height-desktop) / var(--card-width-desktop)));
   }
+  .card__front img.card__desc { width: 100px; height: 100px; transform: translateZ(64px); }
+  .card h3 { font-size: 1.6rem; transform: translateZ(36px); }
+  .card p { font-size: 1rem; transform: translateZ(24px); }
 }
 
 @media (max-width: 900px) {
@@ -454,11 +507,16 @@ input:focus, textarea:focus {
   .banner-text h1 { font-size: 32px; }
   .banner-text p { font-size: 18px; }
   .logo { height: 200px; width: 200px; }
+  .card__front { align-items: center; text-align: center; }
+  .card__front img.card__desc { margin: 0 auto 1rem; }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .card__content { transition: none !important; }
+  .card__front img.card__desc,
+  .card h3,
+  .card p { transition: none !important; transform: none !important; }
   .video-bg, .video-bg video { transition: none !important; will-change: auto !important; }
 }
 
