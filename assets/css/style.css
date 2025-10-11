@@ -397,7 +397,7 @@ input:focus, textarea:focus {
 
 /* Content helpers */
 .card__front img.card__desc {
-  width: 300px;
+  width: 100%;
   height: auto;
   object-fit: contain;
   margin-bottom: 0.75rem;
