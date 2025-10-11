@@ -372,8 +372,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 
 /* Initial subtle depth */
 .card__front img.card__desc { width: auto; height: 416px; object-fit: contain; transform: translateZ(28px); box-shadow: 0 8px 18px rgba(0,0,0,0.12); border-radius: 8px; }
-.card__front h3 { font-size: 2rem; margin: 0 0 .5rem 0; transform: translateZ(20px); }
-.card__front p  { font-size: 1.05rem; line-height: 1.45; transform: translateZ(12px); max-width: 42ch; }
+.card__front h3 { font-size: 2.5rem; margin: 0 0 .5rem 0; transform: translateZ(20px); }
 
 /* When hovering or flipped: strong lift and pop */
 .card:hover .card__front img.card__desc,
@@ -456,6 +455,11 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
   background: transparent; /* ou remplacer rgba par une couleur opaque si besoin */
   backdrop-filter: none;
   border: none; /* supprime la bordure semi-opaque */
+}
+.card__back p{
+  font-size: 20px;
+  font-weight: bolder;
+  backdrop-filter: blur(12px);
 }
 /* supprimer les box-shadows indésirables */
 .card,
