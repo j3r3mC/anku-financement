@@ -381,7 +381,6 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 .card:hover .card__front img.card__desc,
 .card.flipped .card__front img.card__desc {
   transform: translateZ(var(--lift-z)) translateY(-6px) scale(var(--lift-scale));
-  box-shadow: var(--lift-shadow);
   opacity: 1;
 }
 
