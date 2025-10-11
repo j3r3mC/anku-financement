@@ -114,38 +114,6 @@ body {
 .banner-text h1 { font-size: 55px; margin-bottom: 8px; font-weight: bold; color: #8D996D; }
 .banner-text p { color: #8D996D; font-size: 30px; }
 
-/* Investissement cards */
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 16px;
-  padding: 28px;
-}
-
-.card {
-  background: #D2D6CB;
-  height: 877px;
-  width: 538px;
-  border-radius: 12px;
-  padding: 18px;
-  text-align: center;
-  justify-content: center;
-  box-shadow: 0 8px 20px rgba(2,6,23,0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  color:#456715;
-}
-
-.card img{
-    height: 438px;
-    width: 518px;
-    object-fit: contain
-}
-
-.card p { margin: 0; font-size: 33px; }
-
 /* Buttons */
 button{
   display: flex;
