@@ -211,10 +211,10 @@ button:hover {
 
 .reseau p {
   font-size: 30px;
-  color: var(--text-light);
   max-width: 1200px;
   line-height: 1.5;
   text-align: left;
+  color: var(--text-light);
 }
 
 .reseau .card{
