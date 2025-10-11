@@ -437,6 +437,7 @@ input:focus, textarea:focus {
 
 /* Responsive rules — keep aspect but scale down gracefully */
 @media (max-width: 1200px) {
+  
   .card {
     width: 420px;
     height: 420px * (var(--card-height-desktop) / var(--card-width-desktop));
