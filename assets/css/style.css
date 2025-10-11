@@ -358,7 +358,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
   align-items: center;
   justify-content: center;
   text-align: left;
-  padding: 2rem;
+  padding: 0;
 }
 
 /* Layered elements that will "lift" */
