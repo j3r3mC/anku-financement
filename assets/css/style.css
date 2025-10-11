@@ -196,8 +196,9 @@ button:hover {
 
 .reseau .card-container {
   display: flex;
+  gap: 2.5rem;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
 }
