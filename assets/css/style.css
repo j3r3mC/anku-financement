@@ -397,8 +397,8 @@ input:focus, textarea:focus {
 
 /* Content helpers */
 .card__front img.card__desc {
-  width: 72px;
-  height: 72px;
+  width: 300px;
+  height: auto;
   object-fit: contain;
   margin-bottom: 0.75rem;
 }
@@ -425,7 +425,6 @@ input:focus, textarea:focus {
 /* Color variants */
 .card-one .card__front { background: var(--primary-color); color: var(--text-light); }
 .card-one .card__back  { background: var(--card-light); color: var(--primary-color); }
-.card img{height: 300px; width: auto;}
 
 .card-two .card__front { background: var(--secondary-color); color: var(--text-light); }
 .card-two .card__back  { background: var(--card-medium); color: var(--secondary-color); }
