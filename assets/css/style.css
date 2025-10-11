@@ -411,7 +411,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
   pointer-events: none;
   transform-origin: center;
   opacity: 0;
-  transition: opacity 350ms ease, transform 350ms ease;
+  transition: opacity 700ms ease, transform 700ms ease;
   background: radial-gradient(closest-side, rgba(0,0,0,0.28), transparent);
 }
 
