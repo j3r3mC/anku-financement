@@ -319,7 +319,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 1800ms cubic-bezier(.2,.9,.2,1);
+  transition: transform 900ms cubic-bezier(.2,.9,.2,1);
 }
 
 /* Flip */
@@ -429,13 +429,13 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 }
 
 /* Color variants */
-.card-one .card__front { background: rgba(141,153,109,0.72); color: black; backdrop-filter: blur(6px); }
+.card-one .card__front { background: rgba(141,153,109,0.72); color: black; }
 .card-one .card__back  { background: rgba(79,98,30,0.6); color: black; }
 
-.card-two .card__front { background: rgba(79,98,30,0.72); color: black;backdrop-filter: blur(6px); }
+.card-two .card__front { background: rgba(79,98,30,0.72); color: black }
 .card-two .card__back  { background: rgba(141,153,109,0.6); color: black; }
 
-.card-three .card__front { background: rgba(141,153,109,0.72); color: black;backdrop-filter: blur(6px); }
+.card-three .card__front { background: rgba(141,153,109,0.72); color: black }
 .card-three .card__back  { background: rgba(79,98,30,0.6); color: black; }
 
 /* Small cards (network) */
