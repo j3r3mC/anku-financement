@@ -366,7 +366,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 .card__front p,
 .card__front .card-cta {
   transform-origin: center;
-  transition: transform 550ms cubic-bezier(.2,.9,.2,1), box-shadow 450ms ease, opacity 450ms ease;
+  transition: transform 550ms cubic-bezier(.2,.9,.2,1), box-shadow 900ms ease, opacity 900ms ease;
   will-change: transform, opacity;
 }
 
