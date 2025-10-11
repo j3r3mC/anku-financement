@@ -580,7 +580,7 @@ input:focus, textarea:focus {
   max-width: 100%;
   max-height: 55%;
   width: auto;
-  height: auto;
+  height: 416px;
   object-fit: cover;
 }
 
