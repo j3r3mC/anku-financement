@@ -194,6 +194,13 @@ button:hover {
   padding: 3rem;
 }
 
+.reseau .card-container {
+  display: flex;
+  justify-content: space-between*;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 .reseau h2 {
   font-size: 40px;
   font-weight: bold;
