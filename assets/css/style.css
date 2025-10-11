@@ -576,10 +576,15 @@ input:focus, textarea:focus {
 }
 
 /* Ensure image doesn't push layout */
-.card__front, img.card__desc {
+img.card__desc {
   width: auto;
   height: 416px;
   object-fit: cover;
+}
+
+.card__front{
+  height: 538px;
+  width: 538px;
 }
 
 /* Small card modifier for network section to avoid flip behavior */
