@@ -219,7 +219,11 @@ button:hover {
 
 .reseau .card{
   background-color: white;
-  color:  #4f621ec9;
+}
+
+.reseau .card p{
+    color:  #4f621ec9;
+
 }
 
 /* Modal base (hidden by default) */
