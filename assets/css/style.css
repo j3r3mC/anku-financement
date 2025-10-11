@@ -576,19 +576,12 @@ input:focus, textarea:focus {
 }
 
 /* Ensure image doesn't push layout */
-.card__front {
-  max-width: 100%;
-  max-height: 55%;
+.card__front, img.card__desc {
   width: auto;
   height: 416px;
   object-fit: cover;
 }
 
-img.card__desc {
-  width: auto;
-  height: 416px;
-  object-fit: cover;
-}
 /* Small card modifier for network section to avoid flip behavior */
 .card.small { overflow: visible; }
 
