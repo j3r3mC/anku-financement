@@ -359,6 +359,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
   justify-content: center;
   text-align: left;
   padding: 0;
+  backdrop-filter: blur(12px);
 }
 
 /* Layered elements that will "lift" */
@@ -453,18 +454,13 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 .card__front,
 .card__back {
   background: transparent; /* ou remplacer rgba par une couleur opaque si besoin */
-  backdrop-filter: none;
   border: none; /* supprime la bordure semi-opaque */
 }
 .card__back p{
   font-size: 20px;
   font-weight: bolder;
-  height: 100%;
-  backdrop-filter: blur(12px);
   width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  
+  text-align: center;  
 }
 /* supprimer les box-shadows indésirables */
 .card,
