@@ -319,7 +319,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 900ms cubic-bezier(.2,.9,.2,1);
+  transition: transform 1800ms cubic-bezier(.2,.9,.2,1);
 }
 
 /* Flip */
