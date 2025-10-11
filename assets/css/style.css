@@ -373,6 +373,8 @@ input:focus, textarea:focus {
     gap:4rem;
     justify-content: center;
     align-items: center;
+    display: flex;
+    flex-direction: row;
 }
 :root {
     box-sizing: border-box;
