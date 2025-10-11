@@ -10,8 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const focusableSelector = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
   let lastFocused = null;
 
+  const bgVideo = document.querySelector('.video-bg video');
+
   function isOpen(modal) {
     return modal && modal.getAttribute('aria-hidden') === 'false';
+  }
+
+  function pauseBackgroundVideo() {
+    if (!bgVideo) return;
+    try { bgVideo.pause(); } catch {}
+  }
+
+  function playBackgroundVideo() {
+    if (!bgVideo) return;
+    try { bgVideo.play().catch(() => {}); } catch {}
   }
 
   function openModal(modal) {
@@ -22,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
     const first = modal.querySelector(focusableSelector);
     if (first) first.focus();
+    pauseBackgroundVideo();
   }
 
   function closeModal(modal) {
@@ -30,14 +43,19 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    // resume only if no other modal remains open
+    const anyOpen = modals.some(m => m && m.classList.contains('is-open'));
+    if (!anyOpen) playBackgroundVideo();
   }
 
-  // Attach openers
+  // Open triggers
   if (contactBtn && contactModal) contactBtn.addEventListener('click', () => openModal(contactModal));
   if (downloadBtn && downloadModal) downloadBtn.addEventListener('click', () => openModal(downloadModal));
 
-  // Attach closers and backdrop behavior per modal
+  // Close triggers & backdrop handling
   modals.forEach(modal => {
+    if (!modal) return;
+
     const closeEls = Array.from(modal.querySelectorAll('[data-close], .modal-close, .btn.secondary'));
     closeEls.forEach(el => el.addEventListener('click', () => closeModal(modal)));
 
@@ -48,14 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Click on panel shouldn't close (safety)
     const panel = modal.querySelector('.modal-panel');
     if (panel) {
       panel.addEventListener('click', (e) => e.stopPropagation());
     }
+
+    // Close when clicking outside modal element (defensive)
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal(modal);
+    });
   });
 
-  // Global keydown: Escape to close any open modal, Tab trapping for the currently open modal
+  // Global keyboard handling: Escape closes, Tab traps focus inside open modal
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       modals.forEach(m => { if (isOpen(m)) closeModal(m); });
@@ -63,15 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (e.key === 'Tab') {
-      const openModal = modals.find(m => isOpen(m));
-      if (!openModal) return;
-      const focusables = Array.from(openModal.querySelectorAll(focusableSelector));
+      const openModalEl = modals.find(m => isOpen(m));
+      if (!openModalEl) return; // not trapping if no modal open
+
+      const focusables = Array.from(openModalEl.querySelectorAll(focusableSelector));
       if (focusables.length === 0) {
         e.preventDefault();
         return;
       }
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
+
       if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
         last.focus();
@@ -82,74 +106,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Click outside modal-panel to close (for cases where modal element itself is clicked)
-  modals.forEach(modal => {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal(modal);
-    });
-  });
-
   // Forms binding
-  const contactForm = document.getElementById('contactForm');
-  const downloadForm = document.getElementById('downloadForm');
-
   function bindForm(form, modal) {
     if (!form) return;
     form.addEventListener('submit', (ev) => {
       ev.preventDefault();
-
-      // Native constraint check
       if (!form.reportValidity()) return;
 
-      // Honeypot anti-spam
       const honey = form.querySelector('[name="_honey"]');
-      if (honey && honey.value) return;
+      if (honey && honey.value) return; // spam bot
 
-      // If downloadForm, verify consent checkbox before continuing
       if (form.id === 'downloadForm') {
         const consent = form.querySelector('#consent');
         if (!consent || !consent.checked) {
-          // rely on required attribute but guard anyway
           consent?.focus();
           return;
         }
       }
 
-      // Submit the form (keeps redirection defined by _next)
-      // Use a short delay to allow UX (could add a loader here)
+      // Submit and close modal (submission will follow _next redirect)
       form.submit();
-
-      // If download form, trigger immediate file download in addition to submit (non-blocking)
-      if (form.id === 'downloadForm') {
-        try {
-          const fileHref = form.dataset.downloadHref || 'assets/documents/charte-anku.pdf';
-          const fileName = form.dataset.downloadName || 'charte-anku.pdf';
-          const link = document.createElement('a');
-          link.href = fileHref;
-          link.download = fileName;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        } catch (err) {
-          // silent fail, form submission will still handle redirection
-        }
-      }
-
-      // Close modal after submit (optional: you may want to wait for network response)
       if (modal) closeModal(modal);
     });
   }
 
-  bindForm(contactForm, contactModal);
-  bindForm(downloadForm, downloadModal);
+  bindForm(document.getElementById('contactForm'), contactModal);
+  bindForm(document.getElementById('downloadForm'), downloadModal);
 
-  // Accessible flip cards: hover on pointer devices, click/tap/keyboard on all
+  // Accessible flip cards toggles (hover unaffected)
   const cardElements = Array.from(document.querySelectorAll('.container-cards .card')).filter(el => !el.classList.contains('small'));
   cardElements.forEach(card => {
-    // make cards focusable for keyboard
     if (!card.hasAttribute('tabindex')) card.setAttribute('tabindex', '0');
 
-    // keyboard toggle: Enter or Space
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -157,25 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // click/tap toggle
     card.addEventListener('click', (e) => {
-      // don't toggle if clicking a focusable control inside card
       if (e.target.closest('a, button, input, textarea')) return;
       card.classList.toggle('flipped');
     });
   });
-
-  // Reduce background video CPU when modal open: pause background video when any modal opens
-  const bgVideo = document.querySelector('.video-bg video');
-  const observer = new MutationObserver(() => {
-    const anyOpen = modals.some(m => m && m.classList.contains('is-open'));
-    if (!bgVideo) return;
-    if (anyOpen) {
-      try { bgVideo.pause(); } catch {}
-    } else {
-      try { bgVideo.play().catch(() => {}); } catch {}
-    }
-  });
-
-  modals.forEach(m => observer.observe(m, { attributes: true, attributeFilter: ['class'] }));
 });
