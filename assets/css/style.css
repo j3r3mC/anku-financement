@@ -8,7 +8,7 @@
   --text-light: #ffffff;
   --text-dark: #111111;
   --card-width-desktop: 538px;
-  --card-height-desktop: 877px;
+  --card-height-desktop: 538px;
 
   /* lift values */
   --lift-z: 120px;
@@ -500,7 +500,7 @@ input:focus, textarea:focus {
   z-index: 2;
 }
 
-card:hover .card__front .lift-shadow,
+.card:hover .card__front .lift-shadow,
 .card.flipped .card__front .lift-shadow {
   opacity: 1;
   transform: translateX(-50%) translateY(12px) scale(1.08);
