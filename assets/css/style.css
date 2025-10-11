@@ -582,6 +582,13 @@ img.card__desc {
   object-fit: cover;
 }
 
+.card__back p{
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  max-width: 48ch;
+}
+
 .card__front{
   height: 538px;
   width: 538px;
