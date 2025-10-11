@@ -373,7 +373,7 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 }
 
 /* Initial subtle depth */
-.card__front img.card__desc { width: 120px; height: 120px; object-fit: contain; transform: translateZ(28px); box-shadow: 0 8px 18px rgba(0,0,0,0.12); border-radius: 8px; }
+.card__front img.card__desc { width: 100%; height: auto; object-fit: contain; transform: translateZ(28px); box-shadow: 0 8px 18px rgba(0,0,0,0.12); border-radius: 8px; }
 .card__front h3 { font-size: 2rem; margin: 0 0 .5rem 0; transform: translateZ(20px); }
 .card__front p  { font-size: 1.05rem; line-height: 1.45; transform: translateZ(12px); max-width: 42ch; }
 
