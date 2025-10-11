@@ -8,99 +8,89 @@
 </head>
 <body>
   <div class="video-bg" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata">
       <source src="assets/videos/bg-landing-page.webm" type="video/webm">
     </video>
   </div>
 
   <div class="container">
-    <section class="banner" aria-labelledby="bannerTitle">
-      <img src="./assets/images/logo.png" alt="Logo Anku" class="logo">
+    <section class="banner">
+      <img src="./assets/images/logo.png" alt="Logo Anku">
       <div class="banner-text">
-        <h1 id="bannerTitle">Notre ambition</h1>
+        <h1>Notre ambition</h1>
         <p>Devenir la plateforme de référence des circuits courts en Europe...</p>
-        <button id="contactBtn" class="cta" type="button" aria-haspopup="dialog" aria-controls="contactModal">Contactez-nous</button>
+        <button id="contactBtn" class="cta">Contactez-nous</button>
       </div>
     </section>
 
-    <section class="investissement" aria-labelledby="investTitle">
-      <div class="title-section"><h2 id="investTitle">Pourquoi investir ?</h2></div>
-
-      <div class="container-cards" role="list">
-        <div class="card card-one" role="listitem" tabindex="0" aria-label="Marché local">
-          <div class="card__content">
-            <div class="card__front" aria-hidden="false">
-              <div class="media-wrap" style="position:relative;">
-                <img class="card__desc" src="assets/images/copilote.png" alt="Marché local — illustration">
-                <div class="lift-shadow" aria-hidden="true"></div>
-              </div>
-              <h3 class="card__title">Marché local</h3>
-              <p class="card-summary">Un marché en pleine expansion : la demande pour les circuits courts et la consommation responsable explose.</p>
+    <section class="investissement">
+      <div class="title-section"><h2>Pourquoi investir ?</h2></div>
+          <div class="container-cards flex-row">
+            <div class="card card-one">
+                <div class="card__content">
+                    <div class="card__front">
+                        <img class="card__desc" src="assets/images/copilote.png" alt="">
+                        <h3 class="card__desc">Marché local</h3>
+                    </div>
+                    <div class="card__back">
+                        <p class="card__body">
+                          Un marché en pleine expansion : la demande pour les circuits courts et la consommation responsable explose
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="card__back" aria-hidden="true">
-              <div class="card__body">
-                <p>Un marché en pleine expansion : la demande pour les circuits courts et la consommation responsable explose.</p>
-              </div>
+            <div class="card card-two">
+                <div class="card__content">
+                    <div class="card__front">
+                    <img class="card__desc" src="assets/images/reseaux-anku.png" alt="image réseau Anku">
+                        <h3 class="card__desc">
+                            Réseau Anku
+                        </h3>
+                       
+                    </div>
+                    <div class="card__back">
+                        <p class="card__body">
+                            Une solution différente : allier le meilleur d’un réseau social à la praticité du e-commerce local.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-three">
+                <div class="card__content">
+                    <div class="card__front">
+                    <img class="card__desc" src="assets/images/coop.png" alt="image coopérative Anku">
+                        <h3 class="card__desc">
+                            Coopérative
+                        </h3>
+
+                    </div>
+                    <div class="card__back">
+                        <p class="card__body">
+                            Un modèle évolutif : à terme, ouverture de coopératives drives pour centraliser et simplifier la récupération et le dépôt des commandes.
+                        </p>
+                    </div>
+                </div>
             </div>
           </div>
-        </div>
-
-        <div class="card card-two" role="listitem" tabindex="0" aria-label="Réseau Anku">
-          <div class="card__content">
-            <div class="card__front" aria-hidden="false">
-              <div class="media-wrap" style="position:relative;">
-                <img class="card__desc" src="assets/images/reseaux-anku.png" alt="Réseau Anku — illustration">
-                <div class="lift-shadow" aria-hidden="true"></div>
-              </div>
-              <h3 class="card__title">Réseau Anku</h3>
-              <p class="card-summary">Une solution différente : allier le meilleur d’un réseau social à la praticité du e‑commerce local.</p>
-            </div>
-            <div class="card__back" aria-hidden="true">
-              <div class="card__body">
-                <p>Une solution différente : allier le meilleur d’un réseau social à la praticité du e‑commerce local.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card card-three" role="listitem" tabindex="0" aria-label="Coopérative">
-          <div class="card__content">
-            <div class="card__front" aria-hidden="false">
-              <div class="media-wrap" style="position:relative;">
-                <img class="card__desc" src="assets/images/coop.png" alt="Coopérative Anku — illustration">
-                <div class="lift-shadow" aria-hidden="true"></div>
-              </div>
-              <h3 class="card__title">Coopérative</h3>
-              <p class="card-summary">Un modèle évolutif : à terme, ouverture de coopératives drives pour centraliser et simplifier la récupération et le dépôt des commandes.</p>
-            </div>
-            <div class="card__back" aria-hidden="true">
-              <div class="card__body">
-                <p>Un modèle évolutif : à terme, ouverture de coopératives drives pour centraliser et simplifier la récupération et le dépôt des commandes.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button id="downloadDocs" class="cta" type="button" aria-haspopup="dialog" aria-controls="downloadModal">Télécharger les documents</button>
+      
+      <button id="downloadDocs" class="cta">Télécharger les documents</button>
     </section>
 
-    <section class="section-video-inline" aria-labelledby="videoTitle">
-      <h2 id="videoTitle" class="visually-hidden">Présentation</h2>
+    <section class="section-video-inline">
       <div class="video-wrapper">
-        <video id="inlineVideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <video id="inlineVideo" autoplay muted loop playsinline preload="metadata">
           <source src="assets/videos/presentation.mp4" type="video/mp4">
         </video>
       </div>
     </section>
 
-    <section class="reseau" aria-labelledby="reseauTitle">
-      <h2 id="reseauTitle">Connecter producteurs locaux, artisans et particuliers.</h2>
+    <section class="reseau">
+      <h2>Connecter producteurs locaux, artisans et particuliers.</h2>
       <p>Redonner du sens avec le premier réseau social dédié aux circuits courts...</p>
-      <div class="card-container" role="list">
-        <div class="card" role="listitem"><img src="assets/images/profil.png" alt="Icône profil"><p>D’un profil et d’une boutique en ligne pour présenter ses produits</p></div>
-        <div class="card" role="listitem"><img src="assets/images/social.png" alt="Icône social"><p>D’un système de notation et d’avis transparent</p></div>
-        <div class="card" role="listitem"><img src="assets/images/abonnements.png" alt="Icône abonnements"><p>De la possibilité de proposer des abonnements récurrents</p></div>
+      <div class="card-container">
+        <div class="card"><img src="assets/images/profil.png" alt="Icône profil"><p>D’un profil et d’une boutique en ligne pour présenter ses produits</p></div>
+        <div class="card"><img src="assets/images/social.png" alt="Icône social"><p>D’un système de notation et d’avis transparent</p></div>
+        <div class="card"><img src="assets/images/abonnements.png" alt="Icône abonnements"><p>De la possibilité de proposer des abonnements récurrents </p></div>
       </div>
       <p>Les particuliers peuvent découvrir, suivre, commander...</p>
     </section>
@@ -110,7 +100,7 @@
   <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
     <div class="modal-panel" role="document">
-      <button class="modal-close" aria-label="Fermer la fenêtre" data-close>×</button>
+      <button class="modal-close" aria-label="Fermer la fenêtre">×</button>
       <div class="modal-header">
         <img src="assets/images/logo.png" alt="Logo Anku" class="modal-logo">
         <div>
@@ -118,14 +108,11 @@
           <p class="modal-sub">Laissez vos coordonnées et votre message...</p>
         </div>
       </div>
-
-      <form id="contactForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST" novalidate>
-        <!-- Honeypot moved off-screen for accessibility -->
-        <input type="text" name="_honey" id="_honey_contact" autocomplete="off" aria-hidden="true" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;border:0;padding:0;margin:0;">
-
+      <form id="contactForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST">
+        <input type="text" name="_honey" style="display:none" autocomplete="off">
         <input type="hidden" name="_subject" value="Contact landing page — Anku">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://USERNAME.github.io/merci.html">
+        <input type="hidden" name="_next" value="https://j3r3mc.github.io/anku-financement/thx.html">
 
         <label for="contact_lastname">Nom</label>
         <input id="contact_lastname" name="name" type="text" required>
@@ -154,7 +141,7 @@
   <div id="downloadModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="downloadTitle" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
     <div class="modal-panel" role="document">
-      <button class="modal-close" aria-label="Fermer la fenêtre" data-close>×</button>
+      <button class="modal-close" aria-label="Fermer la fenêtre">×</button>
       <div class="modal-header">
         <img src="assets/images/logo.png" alt="Logo Anku" class="modal-logo">
         <div>
@@ -162,13 +149,11 @@
           <p class="modal-sub">Laissez vos coordonnées pour recevoir la documentation.</p>
         </div>
       </div>
-
-      <form id="downloadForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST" novalidate>
+      <form id="downloadForm" class="modal-form" action="https://formsubmit.co/jeje3289@hotmail.fr" method="POST">
         <input type="hidden" name="_subject" value="Nouvelle demande docs — Anku">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://USERNAME.github.io/merci.html">
-
-        <input type="text" name="_honey" id="_honey_download" autocomplete="off" aria-hidden="true" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;border:0;padding:0;margin:0;">
+        <input type="hidden" name="_next" value="https://ton-site.netlify.app/merci.html">
+        <input type="text" name="_honey" style="display:none" autocomplete="off">
 
         <label for="download_name">Nom</label>
         <input id="download_name" name="name" type="text" required>
@@ -198,96 +183,6 @@
       </form>
     </div>
   </div>
-
-  <script>
-    // Basic modal handling and form UX improvements
-    (function () {
-      const openMap = {
-        contactBtn: 'contactModal',
-        downloadDocs: 'downloadModal'
-      };
-
-      // Openers
-      Object.keys(openMap).forEach(btnId => {
-        const btn = document.getElementById(btnId);
-        if (!btn) return;
-        btn.addEventListener('click', () => {
-          const id = openMap[btnId];
-          const modal = document.getElementById(id);
-          if (!modal) return;
-          modal.setAttribute('aria-hidden', 'false');
-          // focus first input in modal
-          const first = modal.querySelector('input, textarea, button');
-          if (first) first.focus();
-        });
-      });
-
-      // Close handlers (backdrop, close buttons, data-close)
-      document.addEventListener('click', (e) => {
-        const closeTarget = e.target.closest('[data-close]');
-        if (closeTarget) {
-          const modal = closeTarget.closest('.modal') || document.querySelector('.modal[aria-hidden="false"]');
-          if (modal) { modal.setAttribute('aria-hidden', 'true'); }
-        }
-      });
-
-      // Close on Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          const open = document.querySelector('.modal[aria-hidden="false"]');
-          if (open) open.setAttribute('aria-hidden', 'true');
-        }
-      });
-
-      // Prevent double submit, show simple feedback
-      const forms = document.querySelectorAll('#contactForm, #downloadForm');
-      forms.forEach(form => {
-        form.addEventListener('submit', (ev) => {
-          const submit = form.querySelector('button[type="submit"]');
-          if (!submit) return;
-          // disable to avoid multiple submits
-          submit.disabled = true;
-          submit.dataset.origText = submit.textContent;
-          submit.textContent = 'Envoi...';
-          // allow normal submit to FormSubmit (no AJAX)
-        });
-
-        // optional: if you prefer to use fetch to show success inline, uncomment below and adapt _next behavior
-        // form.addEventListener('submit', async (ev) => {
-        //   ev.preventDefault();
-        //   const submit = form.querySelector('button[type="submit"]');
-        //   submit.disabled = true;
-        //   submit.textContent = 'Envoi...';
-        //   const data = new FormData(form);
-        //   try {
-        //     const res = await fetch(form.action, { method: 'POST', body: data });
-        //     if (res.ok) {
-        //       window.location.href = form.querySelector('input[name="_next"]').value;
-        //     } else {
-        //       alert('Erreur d\'envoi, veuillez réessayer.');
-        //       submit.disabled = false;
-        //       submit.textContent = submit.dataset.origText || 'Envoyer';
-        //     }
-        //   } catch (err) {
-        //     alert('Erreur réseau.');
-        //     submit.disabled = false;
-        //     submit.textContent = submit.dataset.origText || 'Envoyer';
-        //   }
-        // });
-      });
-
-      // Accessibility: trap focus inside open modal (simple implementation)
-      document.addEventListener('focusin', (e) => {
-        const modal = document.querySelector('.modal[aria-hidden="false"]');
-        if (!modal) return;
-        if (!modal.contains(e.target)) {
-          const first = modal.querySelector('input, textarea, button, a');
-          if (first) first.focus();
-        }
-      });
-
-    })();
-  </script>
 
   <script src="assets/js/script.js" defer></script>
 </body>

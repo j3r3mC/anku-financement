@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Merci — Anku</title>
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="8;url=https://USERNAME.github.io/">
+  <style>
+    :root{
+      --bg:#0f1720;
+      --card:#0b1220;
+      --accent:#8d996d;
+      --muted:#9aa6a0;
+      --white:#ffffff;
+      --radius:14px;
+    }
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--white);background:linear-gradient(180deg,#071017 0%, #0f1720 100%);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:2rem}
+    .card{width:min(820px,94%);background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:2.25rem;box-shadow:0 8px 40px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.04);display:flex;gap:1.5rem;align-items:center}
+    .logo{width:88px;height:88px;flex:0 0 88px;border-radius:10px;background:linear-gradient(135deg,var(--accent), #4f621e);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--white)}
+    h1{font-size:1.6rem;margin:0 0 0.25rem 0}
+    p{margin:0;color:var(--muted);line-height:1.45}
+    .actions{margin-left:auto;display:flex;flex-direction:column;gap:0.6rem}
+    .btn{display:inline-block;padding:0.7rem 1rem;border-radius:10px;background:var(--accent);color:var(--white);text-decoration:none;font-weight:600;border:0}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white)}
+    .note{margin-top:1rem;color:var(--muted);font-size:0.95rem}
+    .small{font-size:0.9rem;color:var(--muted);margin-top:0.25rem}
+    @media (max-width:720px){.card{flex-direction:column;align-items:flex-start}.actions{width:100%;flex-direction:row;justify-content:space-between;margin-left:0}}
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <article class="card" aria-labelledby="thanksTitle">
+      <div class="logo" aria-hidden="true">Anku</div>
+      <div>
+        <h1 id="thanksTitle">Merci — votre message a bien été envoyé</h1>
+        <p>Nous avons bien reçu votre demande. Un membre de l’équipe vous contactera sous 48 heures.</p>
+        <p class="small">Si vous avez demandé la documentation, vous recevrez un lien de téléchargement dans l’e-mail que vous avez fourni.</p>
+        <p class="note">Vous allez être redirigé automatiquement vers la page d’accueil dans quelques secondes.</p>
+      </div>
+
+      <div class="actions" aria-hidden="false">
+        <a class="btn" href="https://USERNAME.github.io/">Retour à l’accueil</a>
+        <a class="btn ghost" href="mailto:jeje3289@hotmail.fr">Contact direct</a>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    // friendly redirect countdown for display (optional visual)
+    (function(){
+      const delay = 8; // seconds, matches meta refresh
+      let t = delay;
+      const note = document.querySelector('.note');
+      if(!note) return;
+      const interval = setInterval(()=> {
+        t--;
+        if(t <= 0){ clearInterval(interval); return; }
+        note.textContent = `Vous allez être redirigé automatiquement vers la page d’accueil dans ${t} secondes.`;
+      },1000);
+    })();
+  </script>
+</body>
+</html>
