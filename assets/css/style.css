@@ -375,6 +375,7 @@ input:focus, textarea:focus {
     align-items: center;
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 :root {
     box-sizing: border-box;
