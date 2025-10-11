@@ -217,6 +217,11 @@ button:hover {
   text-align: left;
 }
 
+.reseau .card{
+  background-color: white;
+  color:  #4f621ec9;
+}
+
 /* Modal base (hidden by default) */
 .modal {
   position: fixed;
