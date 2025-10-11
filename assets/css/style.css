@@ -432,13 +432,13 @@ input:focus, textarea:focus { background-color: var(--primary-color); box-shadow
 }
 
 /* Color variants */
-.card-one .card__front { background: rgba(141,153,109,0.72); color: white;backdrop-filter: blur(12px); }
-.card-one .card__back  { background: rgba(79,98,30,0.8); color: white; }
+.card-one .card__front { background: rgba(141,153,109,0.72); color: white;backdrop-filter: blur(5px); }
+.card-one .card__back  { background: rgba(79,98,30,0.6); color: white; }
 
-.card-two .card__front { background: rgba(79,98,30,0.72); color: white;backdrop-filter: blur(12px); }
-.card-two .card__back  { background: rgba(141,153,109,0.8); color: white; }
+.card-two .card__front { background: rgba(79,98,30,0.72); color: white;backdrop-filter: blur(5px); }
+.card-two .card__back  { background: rgba(141,153,109,0.6); color: white; }
 
-.card-three .card__front { background:  rgba(141,153,109,0.6); color: var(--primary-color);backdrop-filter: blur(12px); }
+.card-three .card__front { background:  rgba(141,153,109,0.6); color: var(--primary-color);backdrop-filter: blur(5px); }
 .card-three .card__back  { background: rgba(141,153,109,8.6); color: #F9EAEE;  }
 
 /* Small cards (network) */
