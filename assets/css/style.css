@@ -742,32 +742,100 @@ img.card__desc {
 /* Forcer hardware compositing sur faces pour réduire artefacts */
 .card__front, .card__back { will-change: transform, opacity; -webkit-transform: translateZ(0); }
 
-/* 4) Mobile tweaks : empêcher hover flip (utiliser .flipped via JS) */
-/* supprime l'effet au hover sur petits écrans pour éviter interactions mal gérées */
+/* MOBILE FIX — flip cards stable and readable on small screens */
 @media (max-width: 900px) {
-  .card:hover .card__content { transform: none; } /* désactive flip on hover */
-  /* si tu veux permettre flip via touche/tab, conserve .card.flipped pour JS */
-  .card__content { pointer-events: auto; }
-  /* hauteur back adaptative */
-  .card { height: auto; min-height: 420px; }
-  .card__back .card__body { max-height: none; overflow: visible; }
-  .card__front img.card__desc { height: auto; max-height: none; }
-}
+  /* Cards become full-width with controlled height */
+  .container-cards { padding: 1rem; gap: 1.25rem; }
+  .card {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    min-height: 420px;               /* ensure enough space for front/back */
+    border-radius: 14px;
+    overflow: hidden;
+    perspective: none;               /* avoid perspective artifacts on tiny screens */
+  }
 
-/* 5) Sécurité overflow : scroll interne si texte trop long (mobile) */
-.card__front .card__body,
-.card__back .card__body {
-  overflow: hidden;
-}
+  /* keep internal 3D context but avoid hover flips */
+  .card__content {
+    position: relative;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform 420ms cubic-bezier(.2,.9,.2,1);
+    will-change: transform;
+  }
+  /* Disable hover-triggered rotate on touch devices; rely on .is-flipped via JS */
+  .card:hover .card__content { transform: none; }
 
-.card__back .card__body.scrollable {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  max-height: calc(100% - 3rem);
-}
+  /* Faces layout: stack naturally and occupy full card area */
+  .card__front,
+  .card__back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 1rem;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    background-clip: padding-box;
+  }
 
-/* 6) Option : si tu veux forcer click-to-flip sur mobile (JS) */
-.card.is-flipped .card__content {
-  transform: rotateY(180deg);
-}
+  /* Slight z-offset to avoid seam / z-fighting */
+  .card__front  { transform: translateZ(0.01px); z-index: 2; }
+  .card__back   { transform: rotateY(180deg) translateZ(-0.01px); z-index: 1; padding: 1.25rem; }
 
+  /* Make front image stretch full width, keep aspect, and limit height */
+  .card__front img.card__desc {
+    width: 100%;
+    height: auto;
+    max-height: 38vh;                /* limits image height on small screens */
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 0.75rem;
+    transform: translateZ(28px);
+  }
+
+  /* Title and summary sizing */
+  .card__front h3 {
+    font-size: 1.25rem;
+    line-height: 1.15;
+    margin: .25rem 0;
+    transform: translateZ(18px);
+  }
+  .card__front p.card-summary {
+    font-size: 0.95rem;
+    margin-bottom: .5rem;
+    transform: translateZ(12px);
+  }
+
+  /* Back face: allow internal scrolling and correct padding */
+  .card__back .card__body {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.25rem 0;
+    margin: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: calc(100% - 2rem);   /* leave space for padding/header */
+    display: block;
+    text-align: left;
+  }
+
+  /* Ensure back content is readable and doesn't overflow the card visually */
+  .card__back p {
+    font-size: 0.98rem;
+    line-height: 1.45;
+    margin: 0;
+    color: inherit;
+    word-break: break-word;
+  }
+
+  /* Flip via class .is-flipped retained; when flipped ensure correct transform */
+  .card.is-flipped .card__content {
