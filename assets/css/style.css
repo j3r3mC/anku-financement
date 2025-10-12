@@ -403,6 +403,7 @@ input:focus, textarea:focus {
   flex-direction: row;
   padding: 2rem 0;
   perspective: 2001px;
+  flex-wrap: wrap;
 }
 
 /* Card */
