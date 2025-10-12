@@ -653,8 +653,7 @@ img.card__desc {
     height: max-content;
   }
   .investissement .card{
-    width: 90vw;
-    height: auto;
+    height: max-content;
     font-size: 15px;
   }
 
