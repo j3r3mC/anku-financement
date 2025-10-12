@@ -637,205 +637,198 @@ img.card__desc {
 #videoTitle{
   display: none;
 }
-/* 1) Vidéos : oublier 16:9 sur mobile, adapter au conteneur */
-/* Desktop : cover plein écran ; Mobile : hauteur contrôlée, width:100% pour éviter barres noires */
-.video-bg video,
-.section-video-inline video,
-.video-wrapper video,
-#inlineVideo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+/* === Responsive : grands écrans === */
+/* === Grands écrans (≤1200px) === */
+@media (max-width: 1200px) {
+  .card {
+    width: 420px;
+    height: calc(420px * (var(--card-height-desktop) / var(--card-width-desktop)));
+  }
+
+  .card__front img.card__desc {
+    height: 280px;
+    max-height: 50%;
+    transform: translateZ(56px);
+  }
+
+  .card__front h3 {
+    font-size: 2rem;
+    transform: translateZ(36px);
+  }
+
+  .card__front p {
+    font-size: 1rem;
+    transform: translateZ(24px);
+    -webkit-line-clamp: 6;
+  }
+
+  .logo {
+    width: 280px;
+    height: 280px;
+  }
+
+  .banner-text h1 {
+    font-size: 42px;
+  }
+
+  .banner-text p {
+    font-size: 24px;
+  }
+
+  .video-wrapper video,
+  .section-video-inline video {
+    height: 80vh;
+  }
 }
 
-/* Inline video wrapper : utiliser aspect-ratio sur desktop, auto sur mobile */
-.video-wrapper {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-}
-
-/* fallback desktop ratio */
-.video-wrapper::before {
-  content: "";
-  display: block;
-  padding-top: 56.25%; /* 16:9 fallback on large screens */
-}
-
-/* place video absolutely to fill wrapper */
-.video-wrapper video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* On small screens remove the 16:9 box and let video be natural height (or viewport fraction) */
-@media (max-width: 800px) {
-  .video-wrapper::before { display: none; padding-top: 0; }
-  .video-wrapper { height: min(50vh, 420px); } /* adapte la hauteur selon besoin */
-  .video-wrapper video { position: relative; height: 100%; width: 100%; object-fit: cover; }
-  .section-video-inline video { height: 50vh; object-fit: cover; }
-}
-
-/* 2) Card face images : plein largeur et garder l'effet 3D */
-.card__front img.card__desc {
-  width: 100%;
-  height: auto;
-  max-height: none;
-  object-fit: cover;      /* crop cohérent quand hauteur restreinte */
-  border-radius: 12px;
-  display: block;
-  transform: translateZ(28px);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* si tu veux limiter la hauteur visuelle sur desktop tout en gardant width:100% */
-@media (min-width: 900px) {
-  .card__front img.card__desc { height: 45%; max-height: 420px; object-fit: cover; }
-}
-
-/* 3) Flip card back fixes (éviter "casser" / z-fighting sur mobile) */
-/* s'assurer que le conteneur clippe et que faces sont séparées dans l'espace Z */
-.card {
-  overflow: hidden;                 /* clippe tout débordement */
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-/* wrapper interne */
-.card__content {
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  transition: transform 600ms cubic-bezier(.2,.9,.2,1);
-  will-change: transform;
-  position: relative;
-}
-
-/* faces : positions identiques, back séparée en Z pour éviter seam */
-.card__front,
-.card__back {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  background-clip: padding-box;
-}
-
-/* léger offset Z pour éviter z-fighting pendant la rotation */
-.card__front { transform: translateZ(0.01px); z-index:2; }
-.card__back  { transform: rotateY(180deg) translateZ(-0.01px); z-index:1; }
-
-/* s'assurer que le back n'est pas position:static sur mobile */
-.card__back { display:flex; flex-direction:column; justify-content:center; align-items:center; padding:1.5rem; }
-
-/* Forcer hardware compositing sur faces pour réduire artefacts */
-.card__front, .card__back { will-change: transform, opacity; -webkit-transform: translateZ(0); }
-
-/* MOBILE FIX — flip cards stable and readable on small screens */
+/* === Tablettes et petits laptops (≤900px) === */
 @media (max-width: 900px) {
-  /* Cards become full-width with controlled height */
-  .container-cards { padding: 1rem; gap: 1.25rem; }
+  .container-cards {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem 0;
+  }
+
+  .card {
+    width: min(90vw, 360px);
+    height: calc(min(90vw, 360px) * (var(--card-height-desktop) / var(--card-width-desktop)));
+  }
+
+  .card__front img.card__desc {
+    height: 220px;
+    transform: translateZ(48px);
+    margin: 0 auto 1rem;
+  }
+
+  .card__front h3 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .card__front p {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .banner {
+    padding: 20px;
+    gap: 24px;
+  }
+
+  .banner-text h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .banner-text p {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .logo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .video-wrapper video,
+  .section-video-inline video {
+    height: 60vh;
+  }
+
+  .reseau {
+    padding: 2rem 1rem;
+  }
+
+  .reseau h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .reseau p {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .reseau .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reseau .card {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+/* === Mobiles (≤600px) === */
+@media (max-width: 600px) {
   .card {
     width: 100%;
-    max-width: 720px;
     height: auto;
-    min-height: 420px;               /* ensure enough space for front/back */
-    border-radius: 14px;
-    overflow: hidden;
-    perspective: none;               /* avoid perspective artifacts on tiny screens */
+    min-height: 480px;
   }
 
-  /* keep internal 3D context but avoid hover flips */
-  .card__content {
-    position: relative;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    transition: transform 420ms cubic-bezier(.2,.9,.2,1);
-    will-change: transform;
-  }
-  /* Disable hover-triggered rotate on touch devices; rely on .is-flipped via JS */
-  .card:hover .card__content { transform: none; }
-
-  /* Faces layout: stack naturally and occupy full card area */
-  .card__front,
-  .card__back {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    padding: 1rem;
-    box-sizing: border-box;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform-style: preserve-3d;
-    background-clip: padding-box;
-  }
-
-  /* Slight z-offset to avoid seam / z-fighting */
-  .card__front  { transform: translateZ(0.01px); z-index: 2; }
-  .card__back   { transform: rotateY(180deg) translateZ(-0.01px); z-index: 1; padding: 1.25rem; }
-
-  /* Make front image stretch full width, keep aspect, and limit height */
   .card__front img.card__desc {
-    width: 100%;
-    height: auto;
-    max-height: 38vh;                /* limits image height on small screens */
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-    margin-bottom: 0.75rem;
-    transform: translateZ(28px);
+    height: 180px;
   }
 
-  /* Title and summary sizing */
   .card__front h3 {
-    font-size: 1.25rem;
-    line-height: 1.15;
-    margin: .25rem 0;
-    transform: translateZ(18px);
+    font-size: 1.3rem;
   }
-  .card__front p.card-summary {
+
+  .card__front p {
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .banner-text h1 {
+    font-size: 26px;
+  }
+
+  .banner-text p {
+    font-size: 16px;
+  }
+
+  .video-wrapper video,
+  .section-video-inline video {
+    height: 50vh;
+  }
+
+  .modal-panel {
+    padding: 1.5rem;
+  }
+
+  .modal-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .modal-header h3 {
+    font-size: 1.4rem;
+  }
+
+  .modal-header p {
+    font-size: 1rem;
+  }
+
+  .btn {
     font-size: 0.95rem;
-    margin-bottom: .5rem;
-    transform: translateZ(12px);
+    padding: 0.6rem 1rem;
   }
 
-  /* Back face: allow internal scrolling and correct padding */
-  .card__back .card__body {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.25rem 0;
-    margin: 0;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    max-height: calc(100% - 2rem);   /* leave space for padding/header */
-    display: block;
-    text-align: left;
+  .reseau h2 {
+    font-size: 1.rem;
   }
 
-  /* Ensure back content is readable and doesn't overflow the card visually */
-  .card__back p {
-    font-size: 0.98rem;
-    line-height: 1.45;
-    margin: 0;
-    color: inherit;
-    word-break: break-word;
+  .reseau p {
+    font-size: 1rem;
   }
 
-  /* Flip via class .is-flipped retained; when flipped ensure correct transform */
-  .card.is-flipped .card__content {
+  .reseau .card p {
+    font-size: 0.95rem;
+  }
+}
