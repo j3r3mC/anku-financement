@@ -652,6 +652,10 @@ img.card__desc {
     align-items: center;
     height: max-content;
   }
+  .investissement .card{
+    width: 90vw;
+    height: auto;
+  }
 
   .investissement .card img{
     width: 80%;
