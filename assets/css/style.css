@@ -653,11 +653,6 @@ img.card__desc {
     height: max-content;
   }
 
-  :root{
-    --card-width-desktop: 90vw;
-    --card-height-desktop: 45vh;
-
-  }
 
 
 }
