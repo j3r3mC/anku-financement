@@ -647,6 +647,7 @@ img.card__desc {
   .investissement .container-cards{
     flex-direction: column;
     align-items: center;
+    height: max-content;
   }
 
   :root{
