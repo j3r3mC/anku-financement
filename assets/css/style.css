@@ -648,8 +648,11 @@ img.card__desc {
   }
   .investissement .card{
     width: 95%;
-    height: auto;
     margin-bottom: 1rem;
+  }
+  .investissement .card img{
+    width: 80%;
+    height: auto;
   }
 
 }
