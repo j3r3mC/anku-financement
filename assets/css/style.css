@@ -655,7 +655,7 @@ img.card__desc {
 
   :root{
     --card-width-desktop: 90vw;
-    --card-height-desktop: auto;
+    --card-height-desktop: 45vh;
 
   }
 
