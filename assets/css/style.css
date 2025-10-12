@@ -649,4 +649,8 @@ img.card__desc {
     flex-direction: column;
     align-items: center;
   }
+  :root{
+    --card-width-desktop: 90vw;
+    --card-height-desktop: auto;
+  }
 }
