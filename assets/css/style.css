@@ -191,41 +191,60 @@ button:hover {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 3rem;
-}
-
-.reseau .card-container {
-  display: flex;
-  gap: 2.5rem;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
+  padding: 3rem 2rem;
+  text-align: center;
 }
 
 .reseau h2 {
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: bold;
   color: var(--text-light);
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .reseau p {
-  font-size: 30px;
-  max-width: 1200px;
-  line-height: 1.5;
-  text-align: left;
+  font-size: 1.25rem;
   color: var(--text-light);
+  max-width: 1000px;
+  line-height: 1.5;
+  margin-bottom: 2rem;
 }
 
-.reseau .card{
+/* Cartes d'information */
+.reseau .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.reseau .card {
   background-color: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 280px;
+  max-width: 90vw;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
 
-.reseau .card p{
-    color:  #4f621ec9;
-
+.reseau .card:hover {
+  transform: translateY(-6px);
 }
+
+.reseau .card img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+
 
 /* Modal base (hidden by default) */
 .modal {
@@ -660,6 +679,30 @@ img.card__desc {
     height: 80vh;
   }
 }
+@media (max-width: 900px) {
+  .reseau {
+    padding: 2rem 1rem;
+  }
+
+  .reseau h2 {
+    font-size: 2rem;
+  }
+
+  .reseau p {
+    font-size: 1.1rem;
+  }
+
+  .reseau .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reseau .card {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
 
 /* === Responsive : tablettes et petits laptops === */
 @media (max-width: 900px) {
