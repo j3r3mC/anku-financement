@@ -638,3 +638,15 @@ img.card__desc {
   display: none;
 }
 /* === Responsive : grands écrans === */
+@media (max-width: 400px) {
+  body{
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .investissement .card-container{
+    flex-direction: column;
+    align-items: center;
+  }
+}
