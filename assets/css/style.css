@@ -531,7 +531,7 @@ input:focus, textarea:focus {
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
-  background: radial-gradient(closest-side, rgba(0,0,0,0.28), transparent);
+  background: radial-gradient(closest-side, rgba(0,0,0,0.29), transparent);
   transition: opacity 300ms ease, transform 300ms ease;
   z-index: 2;
 }
