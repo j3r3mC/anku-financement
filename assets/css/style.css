@@ -645,7 +645,8 @@ img.card__desc {
     overflow-y: auto;
   }
   .investissement .container-cards{
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
   }
 
   :root{
