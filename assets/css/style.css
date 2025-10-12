@@ -644,6 +644,9 @@ img.card__desc {
     overflow-x: hidden;
     overflow-y: auto;
   }
+  .investissement .container-cards{
+    flex-wrap: wrap;
+  }
 
   :root{
     --card-width-desktop: 90vw;
