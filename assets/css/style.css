@@ -649,8 +649,13 @@ img.card__desc {
     flex-direction: column;
     align-items: center;
   }
+  .investissement .card img{
+    width: 80%;
+    height: auto;
+  }
   :root{
     --card-width-desktop: 90vw;
     --card-height-desktop: auto;
   }
+
 }
