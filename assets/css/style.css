@@ -645,9 +645,4 @@ img.card__desc {
     overflow-y: auto;
   }
 
-  :root{
-    --card-width-desktop: 95vw;
-    --card-height-desktop: auto;
-  }
-
 }
