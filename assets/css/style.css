@@ -637,198 +637,137 @@ img.card__desc {
 #videoTitle{
   display: none;
 }
-/* === Responsive : grands écrans === */
-/* === Grands écrans (≤1200px) === */
-@media (max-width: 1200px) {
-  .card {
-    width: 420px;
-    height: calc(420px * (var(--card-height-desktop) / var(--card-width-desktop)));
-  }
-
-  .card__front img.card__desc {
-    height: 280px;
-    max-height: 50%;
-    transform: translateZ(56px);
-  }
-
-  .card__front h3 {
-    font-size: 2rem;
-    transform: translateZ(36px);
-  }
-
-  .card__front p {
-    font-size: 1rem;
-    transform: translateZ(24px);
-    -webkit-line-clamp: 6;
-  }
-
-  .logo {
-    width: 280px;
-    height: 280px;
-  }
-
-  .banner-text h1 {
-    font-size: 42px;
-  }
-
-  .banner-text p {
-    font-size: 24px;
-  }
-
-  .video-wrapper video,
-  .section-video-inline video {
-    height: 80vh;
-  }
+/* 1) Vidéos : oublier 16:9 sur mobile, adapter au conteneur */
+/* Desktop : cover plein écran ; Mobile : hauteur contrôlée, width:100% pour éviter barres noires */
+.video-bg video,
+.section-video-inline video,
+.video-wrapper video,
+#inlineVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* === Tablettes et petits laptops (≤900px) === */
+/* Inline video wrapper : utiliser aspect-ratio sur desktop, auto sur mobile */
+.video-wrapper {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* fallback desktop ratio */
+.video-wrapper::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* 16:9 fallback on large screens */
+}
+
+/* place video absolutely to fill wrapper */
+.video-wrapper video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* On small screens remove the 16:9 box and let video be natural height (or viewport fraction) */
+@media (max-width: 800px) {
+  .video-wrapper::before { display: none; padding-top: 0; }
+  .video-wrapper { height: min(50vh, 420px); } /* adapte la hauteur selon besoin */
+  .video-wrapper video { position: relative; height: 100%; width: 100%; object-fit: cover; }
+  .section-video-inline video { height: 50vh; object-fit: cover; }
+}
+
+/* 2) Card face images : plein largeur et garder l'effet 3D */
+.card__front img.card__desc {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: cover;      /* crop cohérent quand hauteur restreinte */
+  border-radius: 12px;
+  display: block;
+  transform: translateZ(28px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* si tu veux limiter la hauteur visuelle sur desktop tout en gardant width:100% */
+@media (min-width: 900px) {
+  .card__front img.card__desc { height: 45%; max-height: 420px; object-fit: cover; }
+}
+
+/* 3) Flip card back fixes (éviter "casser" / z-fighting sur mobile) */
+/* s'assurer que le conteneur clippe et que faces sont séparées dans l'espace Z */
+.card {
+  overflow: hidden;                 /* clippe tout débordement */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* wrapper interne */
+.card__content {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(.2,.9,.2,1);
+  will-change: transform;
+  position: relative;
+}
+
+/* faces : positions identiques, back séparée en Z pour éviter seam */
+.card__front,
+.card__back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  background-clip: padding-box;
+}
+
+/* léger offset Z pour éviter z-fighting pendant la rotation */
+.card__front { transform: translateZ(0.01px); z-index:2; }
+.card__back  { transform: rotateY(180deg) translateZ(-0.01px); z-index:1; }
+
+/* s'assurer que le back n'est pas position:static sur mobile */
+.card__back { display:flex; flex-direction:column; justify-content:center; align-items:center; padding:1.5rem; }
+
+/* Forcer hardware compositing sur faces pour réduire artefacts */
+.card__front, .card__back { will-change: transform, opacity; -webkit-transform: translateZ(0); }
+
+/* 4) Mobile tweaks : empêcher hover flip (utiliser .flipped via JS) */
+/* supprime l'effet au hover sur petits écrans pour éviter interactions mal gérées */
 @media (max-width: 900px) {
-  .container-cards {
-    flex-direction: column;
-    gap: 2rem;
-    padding: 1.5rem 0;
-  }
-
-  .card {
-    width: min(90vw, 360px);
-    height: calc(min(90vw, 360px) * (var(--card-height-desktop) / var(--card-width-desktop)));
-  }
-
-  .card__front img.card__desc {
-    height: 220px;
-    transform: translateZ(48px);
-    margin: 0 auto 1rem;
-  }
-
-  .card__front h3 {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-
-  .card__front p {
-    font-size: 0.95rem;
-    text-align: center;
-  }
-
-  .banner {
-    padding: 20px;
-    gap: 24px;
-  }
-
-  .banner-text h1 {
-    font-size: 32px;
-    text-align: center;
-  }
-
-  .banner-text p {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .logo {
-    width: 200px;
-    height: 200px;
-  }
-
-  .video-wrapper video,
-  .section-video-inline video {
-    height: 60vh;
-  }
-
-  .reseau {
-    padding: 2rem 1rem;
-  }
-
-  .reseau h2 {
-    font-size: 2rem;
-    text-align: center;
-  }
-
-  .reseau p {
-    font-size: 1.1rem;
-    text-align: center;
-  }
-
-  .reseau .card-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .reseau .card {
-    width: 100%;
-    max-width: 360px;
-  }
+  .card:hover .card__content { transform: none; } /* désactive flip on hover */
+  /* si tu veux permettre flip via touche/tab, conserve .card.flipped pour JS */
+  .card__content { pointer-events: auto; }
+  /* hauteur back adaptative */
+  .card { height: auto; min-height: 420px; }
+  .card__back .card__body { max-height: none; overflow: visible; }
+  .card__front img.card__desc { height: auto; max-height: none; }
 }
 
-/* === Mobiles (≤600px) === */
-@media (max-width: 600px) {
-  .card {
-    width: 100%;
-    height: auto;
-    min-height: 480px;
-  }
-
-  .card__front img.card__desc {
-    height: 180px;
-  }
-
-  .card__front h3 {
-    font-size: 1.3rem;
-  }
-
-  .card__front p {
-    font-size: 0.9rem;
-  }
-
-  .logo {
-    width: 140px;
-    height: 140px;
-  }
-
-  .banner-text h1 {
-    font-size: 26px;
-  }
-
-  .banner-text p {
-    font-size: 16px;
-  }
-
-  .video-wrapper video,
-  .section-video-inline video {
-    height: 50vh;
-  }
-
-  .modal-panel {
-    padding: 1.5rem;
-  }
-
-  .modal-logo {
-    width: 120px;
-    height: 120px;
-  }
-
-  .modal-header h3 {
-    font-size: 1.4rem;
-  }
-
-  .modal-header p {
-    font-size: 1rem;
-  }
-
-  .btn {
-    font-size: 0.95rem;
-    padding: 0.6rem 1rem;
-  }
-
-  .reseau h2 {
-    font-size: 1.7rem;
-  }
-
-  .reseau p {
-    font-size: 1rem;
-  }
-
-  .reseau .card p {
-    font-size: 0.95rem;
-  }
+/* 5) Sécurité overflow : scroll interne si texte trop long (mobile) */
+.card__front .card__body,
+.card__back .card__body {
+  overflow: hidden;
 }
+
+.card__back .card__body.scrollable {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100% - 3rem);
+}
+
+/* 6) Option : si tu veux forcer click-to-flip sur mobile (JS) */
+.card.is-flipped .card__content {
+  transform: rotateY(180deg);
+}
+
