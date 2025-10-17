@@ -151,3 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+function isMobile() {
+  return window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+}
+
+if (isMobile()) {
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+}
