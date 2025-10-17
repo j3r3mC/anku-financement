@@ -666,6 +666,7 @@ img.card__desc {
 
   .video-wrapper {
     width: 99vw;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
