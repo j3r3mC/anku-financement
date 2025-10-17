@@ -515,11 +515,7 @@ input:focus, textarea:focus {
   text-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
-.card:hover .card__front p,
-.card.flipped .card__front p {
-  transform: translateZ(calc(var(--lift-z) - 72px));
-  opacity: 1;
-}
+
 
 /* Add a pseudo "floating shadow" under lifted elements for realism */
 /* Use a separate pseudo on an inner wrapper rather than image ::after to avoid layout issues */
