@@ -656,7 +656,7 @@ img.card__desc {
     height: auto;
   }
   .section-video-inline {
-    width: 100vw;
+    width: max-content;
     padding-top: 56.25%; /* 16:9 ratio */
     position: relative;
     overflow: hidden;
