@@ -657,7 +657,7 @@ img.card__desc {
   }
 
 .section-video-inline video {
-  height: 100%;
+  height: auto;
   display: block;
   width: 99vw;
 }
