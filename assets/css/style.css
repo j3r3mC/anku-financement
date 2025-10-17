@@ -670,13 +670,15 @@ img.card__desc {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 5rem;
+
+
   }
 
   .section-video-inline video {
     width: 99vw;
     object-fit: fill; /* affiche toute la vidéo sans crop */
     display: block;
-    margin-bottom: 5rem;
   }
 
 }
