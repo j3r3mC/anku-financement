@@ -660,7 +660,6 @@ img.card__desc {
     padding-top: 56.25%; /* 16:9 ratio */
     position: relative;
     overflow: hidden;
-    background: black; /* pour éviter les bandes blanches */
   }
 
   .video-wrapper {
