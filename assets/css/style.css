@@ -665,7 +665,7 @@ img.card__desc {
 .video-wrapper {
   position: relative;
   width: 100vw;
-  padding-top: 100vh; /* 16:9 ratio fallback */
+  padding-top: 100%; /* 16:9 ratio fallback */
   overflow: hidden;
 }
 
