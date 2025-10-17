@@ -656,23 +656,26 @@ img.card__desc {
     height: auto;
   }
   .section-video-inline {
-    height: 100vh; /* prend toute la hauteur de l'écran */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black; /* pour éviter les bandes blanches autour */
     overflow: hidden;
   }
 
   .video-wrapper {
-    position: relative;
     width: 100vw;
-    height: 100%; /* hérite de la section */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .section-video-inline video {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* remplit sans déformation */
+    object-fit: contain; /* affiche toute la vidéo sans crop */
     display: block;
   }
 
