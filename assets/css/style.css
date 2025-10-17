@@ -515,7 +515,11 @@ input:focus, textarea:focus {
   text-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
-
+.card:hover .card__front p,
+.card.flipped .card__front p {
+  transform: translateZ(calc(var(--lift-z) - 72px));
+  opacity: 1;
+}
 
 /* Add a pseudo "floating shadow" under lifted elements for realism */
 /* Use a separate pseudo on an inner wrapper rather than image ::after to avoid layout issues */
@@ -675,6 +679,44 @@ img.card__desc {
     width: 99vw;
     object-fit: contain; /* affiche toute la vidéo sans crop */
     display: block;
+  }
+
+  .card {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+
+  .card__content {
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  .card.flipped .card__content {
+    transform: rotateY(180deg);
+  }
+
+  .card__front,
+  .card__back {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  .card__back {
+    transform: rotateY(180deg);
+  }
+
+  .card__front h3,
+  .card__front p {
+    transform: translateZ(0); /* stabilise le rendu 3D */
   }
 
 }
