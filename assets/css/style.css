@@ -265,7 +265,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  height: 85vh;
+  height: 80vh;
 }
 
 .modal textarea{
