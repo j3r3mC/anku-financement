@@ -211,6 +211,10 @@ button:hover {
   margin-bottom: 2rem;
 }
 
+.reseau .card p{
+  color: var(--secondary-color);
+}
+
 /* Cartes d'information */
 .reseau .card-container {
   display: flex;
