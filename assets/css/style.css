@@ -265,7 +265,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  height: 90vh;
+  height: 85vh;
 }
 
 .modal textarea{
@@ -379,14 +379,7 @@ input:focus, textarea:focus {
   outline: none;
 }
 
-.modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
+
 
 .modal.is-open {
   display: flex;
