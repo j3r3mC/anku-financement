@@ -43,16 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-    // resume only if no other modal remains open
     const anyOpen = modals.some(m => m && m.classList.contains('is-open'));
     if (!anyOpen) playBackgroundVideo();
   }
 
-  // Open triggers
   if (contactBtn && contactModal) contactBtn.addEventListener('click', () => openModal(contactModal));
   if (downloadBtn && downloadModal) downloadBtn.addEventListener('click', () => openModal(downloadModal));
 
-  // Close triggers & backdrop handling
   modals.forEach(modal => {
     if (!modal) return;
 
@@ -71,13 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
       panel.addEventListener('click', (e) => e.stopPropagation());
     }
 
-    // Close when clicking outside modal element (defensive)
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal(modal);
     });
   });
 
-  // Global keyboard handling: Escape closes, Tab traps focus inside open modal
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       modals.forEach(m => { if (isOpen(m)) closeModal(m); });
@@ -86,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (e.key === 'Tab') {
       const openModalEl = modals.find(m => isOpen(m));
-      if (!openModalEl) return; // not trapping if no modal open
+      if (!openModalEl) return;
 
       const focusables = Array.from(openModalEl.querySelectorAll(focusableSelector));
       if (focusables.length === 0) {
@@ -106,26 +101,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Forms binding
   function bindForm(form, modal) {
     if (!form) return;
+
+    const consent = form.querySelector('#consent');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    if (consent && submitBtn) {
+      submitBtn.disabled = !consent.checked;
+      consent.addEventListener('change', () => {
+        submitBtn.disabled = !consent.checked;
+      });
+    }
+
     form.addEventListener('submit', (ev) => {
       ev.preventDefault();
       if (!form.reportValidity()) return;
 
       const honey = form.querySelector('[name="_honey"]');
-      if (honey && honey.value) return; // spam bot
+      if (honey && honey.value) return;
 
       if (form.id === 'downloadForm') {
-        const consent = form.querySelector('#consent');
         if (!consent || !consent.checked) {
           consent?.focus();
           return;
         }
       }
 
-      // Submit and close modal (submission will follow _next redirect)
-      form.submit();
+      // Submit via FormSubmit
+      const tempForm = document.createElement('form');
+      tempForm.action = form.action;
+      tempForm.method = form.method;
+      tempForm.style.display = 'none';
+
+      Array.from(form.elements).forEach(el => {
+        if (!el.name || el.disabled) return;
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = el.name;
+        input.value = el.value;
+        tempForm.appendChild(input);
+      });
+
+      document.body.appendChild(tempForm);
+      tempForm.submit();
+
+      // Téléchargement du ZIP
+      if (form.id === 'downloadForm') {
+        const zipUrl = 'assets/documents/docs-anku.zip';
+        const link = document.createElement('a');
+        link.href = zipUrl;
+        link.download = 'docs-anku.zip';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
       if (modal) closeModal(modal);
     });
   }
@@ -133,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
   bindForm(document.getElementById('contactForm'), contactModal);
   bindForm(document.getElementById('downloadForm'), downloadModal);
 
-  // Accessible flip cards toggles (hover unaffected)
   const cardElements = Array.from(document.querySelectorAll('.container-cards .card')).filter(el => !el.classList.contains('small'));
   cardElements.forEach(card => {
     if (!card.hasAttribute('tabindex')) card.setAttribute('tabindex', '0');
