@@ -776,6 +776,9 @@ img.card__desc {
   object-fit: contain;
 }
 
+.modal p{
+  display: none;
+}
 
 
   @keyframes fadeInUp {
