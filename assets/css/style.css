@@ -232,6 +232,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease;
+  color: var(--secondary-color);
 }
 
 .reseau .card:hover {
@@ -767,6 +768,8 @@ img.card__desc {
     color: white;
     max-width: 48ch;
   }
+
+
 
   @keyframes fadeInUp {
     from {
