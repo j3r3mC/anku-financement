@@ -676,7 +676,7 @@ img.card__desc {
     width: 99vw;
     object-fit: fill; /* affiche toute la vidéo sans crop */
     display: block;
-    margin: 5rem;
+    margin-bottom: 5rem;
   }
 
 }
