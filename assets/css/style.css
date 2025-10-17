@@ -673,6 +673,7 @@ img.card__desc {
   }
 
   .section-video-inline video {
+    top: 0;
     width: 99vw;
     object-fit: fill; /* affiche toute la vidéo sans crop */
     display: block;
