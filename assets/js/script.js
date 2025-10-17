@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!form) return;
 
     const consent = form.querySelector('#consent');
-    const submitBtn = form.querySelector('button[type="submit"]');
+    const submitBtn = form.querySelector('#downloadTrigger');
 
     if (consent && submitBtn) {
       submitBtn.disabled = !consent.checked;
@@ -126,9 +126,18 @@ document.addEventListener('DOMContentLoaded', () => {
           consent?.focus();
           return;
         }
+
+        // Téléchargement du ZIP
+        const zipUrl = 'assets/documents/docs-anku.zip';
+        const link = document.createElement('a');
+        link.href = zipUrl;
+        link.download = 'docs-anku.zip';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
 
-      // Submit via FormSubmit
+      // Soumission via FormSubmit
       const tempForm = document.createElement('form');
       tempForm.action = form.action;
       tempForm.method = form.method;
@@ -145,17 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       document.body.appendChild(tempForm);
       tempForm.submit();
-
-      // Téléchargement du ZIP
-      if (form.id === 'downloadForm') {
-        const zipUrl = 'assets/documents/docs-anku.zip';
-        const link = document.createElement('a');
-        link.href = zipUrl;
-        link.download = 'docs-anku.zip';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
 
       if (modal) closeModal(modal);
     });
