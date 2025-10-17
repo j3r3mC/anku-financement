@@ -436,6 +436,7 @@ input:focus, textarea:focus {
   transition: transform 900ms cubic-bezier(.2,.9,.2,1);
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Flip */
@@ -606,6 +607,7 @@ input:focus, textarea:focus {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 8;
+  line-clamp: 8;
   -webkit-box-orient: vertical;
   word-break: break-word;
   white-space: normal;
