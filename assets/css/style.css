@@ -790,5 +790,11 @@ img.card__desc {
       transform: translateY(0);
     }
   }
+
+  .modal-logo{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
 }
 
