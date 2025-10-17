@@ -214,10 +214,7 @@ button:hover {
   justify-content: space-between;
 }
 
-.reseau .card img {
-  width: 100%;
-  height: auto;
-}
+
 
 .reseau .card p{
   color: var(--secondary-color);
@@ -252,8 +249,8 @@ button:hover {
 }
 
 .reseau .card img {
-  width: 64px;
-  height: 64px;
+  width: 100%;
+  height: auto;
   object-fit: contain;
   margin-bottom: 1rem;
 }
