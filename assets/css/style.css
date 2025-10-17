@@ -656,20 +656,24 @@ img.card__desc {
     height: auto;
   }
 
-.video-wrapper {
-  position: relative;
-  width: 100vw;
-  padding-top: 56.25%; /* 16:9 ratio */
-  overflow: hidden;
-}
+  .section-video-inline {
+    height: 100vh; /* prend toute la hauteur de l'écran */
+    overflow: hidden;
+  }
 
-.section-video-inline video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
+  .video-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100%; /* hérite de la section */
+  }
 
+  .section-video-inline video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* remplit sans déformation */
+    display: block;
+  }
 }
