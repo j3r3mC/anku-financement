@@ -214,6 +214,11 @@ button:hover {
   justify-content: space-between;
 }
 
+.reseau .card img {
+  width: 100%;
+  height: auto;
+}
+
 .reseau .card p{
   color: var(--secondary-color);
 }
