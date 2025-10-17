@@ -656,24 +656,25 @@ img.card__desc {
     height: auto;
   }
   .section-video-inline {
-    height: 45vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: black; /* pour éviter les bandes blanches autour */
     overflow: hidden;
   }
 
   .video-wrapper {
     width: 100vw;
-    height: 50vh;
+    height: 100%;
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: center;
   }
 
   .section-video-inline video {
     width: 100vw;
-    object-fit: cover; /* affiche toute la vidéo sans crop */
+    object-fit: contain; /* affiche toute la vidéo sans crop */
     display: block;
   }
 
