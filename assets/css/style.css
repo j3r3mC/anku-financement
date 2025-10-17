@@ -677,6 +677,7 @@ img.card__desc {
     width: 100%;
     height: auto;
     object-fit: contain; /* affiche toute la vidéo sans crop */
+    top: 0;
   }
 
 
