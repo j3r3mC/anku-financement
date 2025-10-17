@@ -674,8 +674,7 @@ img.card__desc {
 
   .section-video-inline video {
     width: 100vw;
-    height: 100%;
-    object-fit: contain; /* affiche toute la vidéo sans crop */
+    object-fit: cover; /* affiche toute la vidéo sans crop */
     display: block;
   }
 
