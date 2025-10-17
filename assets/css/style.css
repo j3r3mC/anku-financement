@@ -655,7 +655,6 @@ img.card__desc {
     width: 80%;
     height: auto;
   }
-
   .section-video-inline {
     height: 100vh; /* prend toute la hauteur de l'écran */
     overflow: hidden;
@@ -670,10 +669,12 @@ img.card__desc {
   .section-video-inline video {
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 0;
     width: 100vw;
     height: 100vh;
     object-fit: cover; /* remplit sans déformation */
     display: block;
   }
+
 }
+
