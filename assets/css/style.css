@@ -654,7 +654,11 @@ img.card__desc {
   }
   .investissement .card img{
     width: 80%;
-    height: auto;
+    height: 300px;
+  }
+  .inlineVideo video{
+    height: 300px;
+    width: 100%;
   }
 
 }
