@@ -659,12 +659,12 @@ img.card__desc {
 .section-video-inline video {
   height: auto;
   display: block;
-  width: 100%;
+  width: 99vw;
 }
 
 .video-wrapper {
   position: relative;
-  width: 100%;
+  width: 100vw;
   padding-top: 46.25%; /* 16:9 ratio fallback */
   overflow: hidden;
 }
