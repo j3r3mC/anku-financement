@@ -459,8 +459,8 @@ input:focus, textarea:focus {
   padding: 2.25rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -474,7 +474,7 @@ input:focus, textarea:focus {
 /* Front layout */
 .card__front {
   gap: 1rem;
-  align-items: flex-start;
+  align-items: center;
 }
 
 /* Back rotates */
