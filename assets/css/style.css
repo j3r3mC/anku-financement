@@ -244,6 +244,10 @@ button:hover {
   color: var(--secondary-color);
 }
 
+.reseau .card p{
+  height: 91px;
+}
+
 .reseau .card:hover {
   transform: translateY(-6px);
 }
