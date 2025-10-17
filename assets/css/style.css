@@ -777,6 +777,11 @@ img.card__desc {
     color: white;
     max-width: 48ch;
   }
+    .modal-logo{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
 
 
 
@@ -791,10 +796,6 @@ img.card__desc {
     }
   }
 
-  .modal-logo{
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
+
 }
 
