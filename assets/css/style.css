@@ -656,7 +656,7 @@ img.card__desc {
     height: auto;
   }
   .section-video-inline {
-    height: 75vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
