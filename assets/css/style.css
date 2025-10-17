@@ -729,8 +729,8 @@ img.card__desc {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     border-radius: 16px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
