@@ -776,7 +776,7 @@ img.card__desc {
   object-fit: contain;
 }
 
-.modal p{
+.modal .modal-sub{
   display: none;
 }
 
